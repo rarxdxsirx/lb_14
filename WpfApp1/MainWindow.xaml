@@ -1,0 +1,38 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <ListBox Name="ClientsList">
+        <ListBox.ItemTemplate>
+            <DataTemplate>
+                <Grid>
+                    <Rectangle>
+                        <Rectangle.Fill>
+                            <SolidColorBrush Color="{Binding PreferredColor}" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{Binding Id}" ContentStringFormat="#{0}" FontSize="20"></Label>
+                        <StackPanel Grid.Column="1">
+                            <StackPanel Orientation="Horizontal">
+                                <Label Grid.Column="0" Content="{Binding FirstName}" FontSize="17"></Label>
+                                <Label Grid.Column="0" Content="{Binding LastName}" FontSize="17"></Label>
+                            </StackPanel>
+                            <TextBlock Text="{Binding ShortInfo}"></TextBlock>
+                        </StackPanel>
+                        <ListBox Name="clientTariffsList" ItemsSource="{Binding Tariff}" Grid.Column="2" FontSize="17"/>
+                    </Grid>
+                </Grid>
+            </DataTemplate>
+        </ListBox.ItemTemplate>
+    </ListBox>
+</Window>
